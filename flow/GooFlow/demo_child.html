@@ -3,10 +3,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>流程图DEMO</title>
-<!--[if lt IE 9]>
-<?import namespace="v" implementation="#default#VML" ?>
-<![endif]-->
-<!--<link rel="stylesheet" type="text/css" href="codebase/GooFlow2.css"/>-->
 <link rel="stylesheet" type="text/css" href="codebase/GooFlow.css"/>
 <script type="text/javascript" src="child.js"></script>
 <script type="text/javascript" src="../jquery.min.js"></script>
@@ -44,9 +40,6 @@ var demo;
 $(document).ready(function(){
 	demo=$.createGooFlow($("#demo"),property);
 	demo.setNodeRemarks(remark);
-	//demo.onItemDel=function(id,type){
-	//	return confirm("确定要删除该单元吗?");
-	//}
 	demo.loadData(jsondata);
 });
 var out;
