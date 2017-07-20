@@ -74,7 +74,7 @@ var
 	// Strict HTML recognition (#11290: must start with <)
 	rquickExpr = /^(?:\s*(<[\w\W]+>)[^>]*|#([\w-]*))$/,
 
-	// Match a standalone tag
+	// Match a standalone tag 匹配单标签
 	rsingleTag = /^<(\w+)\s*\/?>(?:<\/\1>|)$/,
 
 	// Matches dashed string for camelizing  IE的前缀，驼峰式转法第一个字母大写
@@ -439,7 +439,7 @@ jQuery.extend({ //第15课  扩展一些常用的工具方法
 			return false;
 		}
 
-		// Support: Firefox <20
+		// Support: Firefox <20 火狐浏览器小于20的版本
 		// The try/catch suppresses exceptions thrown when attempting to access
 		// the "constructor" property of certain host objects, ie. |window.location|
 		// https://bugzilla.mozilla.org/show_bug.cgi?id=814622
@@ -469,11 +469,11 @@ jQuery.extend({ //第15课  扩展一些常用的工具方法
 		throw new Error( msg );
 	},
 
-	// data: string of html
+	// data: string of html  第20课 解析节点
 	// context (optional): If specified, the fragment will be created in this context, defaults to document
 	// keepScripts (optional): If true, will include scripts passed in the html string
 	parseHTML: function( data, context, keepScripts ) {
-		if ( !data || typeof data !== "string" ) {
+		if ( !data || typeof data !== "string" ) {//判断是否为字符串
 			return null;
 		}
 		if ( typeof context === "boolean" ) {
@@ -482,7 +482,7 @@ jQuery.extend({ //第15课  扩展一些常用的工具方法
 		}
 		context = context || document;
 
-		var parsed = rsingleTag.exec( data ),
+		var parsed = rsingleTag.exec( data ),//判断是否为单标签
 			scripts = !keepScripts && [];
 
 		// Single tag
@@ -499,7 +499,7 @@ jQuery.extend({ //第15课  扩展一些常用的工具方法
 		return jQuery.merge( [], parsed.childNodes );
 	},
 
-	parseJSON: JSON.parse,
+	parseJSON: JSON.parse, //第21课 解析  
 
 	// Cross-browser xml parsing
 	parseXML: function( data ) {
@@ -508,7 +508,7 @@ jQuery.extend({ //第15课  扩展一些常用的工具方法
 			return null;
 		}
 
-		// Support: IE9
+		// Support: IE9    IE8使用ActiveXObject解析
 		try {
 			tmp = new DOMParser();
 			xml = tmp.parseFromString( data , "text/xml" );
@@ -522,9 +522,9 @@ jQuery.extend({ //第15课  扩展一些常用的工具方法
 		return xml;
 	},
 
-	noop: function() {},
+	noop: function() {},//空函数
 
-	// Evaluates a script in a global context
+	// Evaluates a script in a global context   
 	globalEval: function( code ) {
 		var script,
 				indirect = eval;
@@ -547,7 +547,7 @@ jQuery.extend({ //第15课  扩展一些常用的工具方法
 		}
 	},
 
-	// Convert dashed to camelCase; used by the css and data modules
+	// Convert dashed to camelCase; used by the css and data modules 转驼峰的方法
 	// Microsoft forgot to hump their vendor prefix (#9572)
 	camelCase: function( string ) {
 		return string.replace( rmsPrefix, "ms-" ).replace( rdashAlpha, fcamelCase );
@@ -557,7 +557,7 @@ jQuery.extend({ //第15课  扩展一些常用的工具方法
 		return elem.nodeName && elem.nodeName.toLowerCase() === name.toLowerCase();
 	},
 
-	// args is for internal usage only
+	// args is for internal usage only 遍历集合
 	each: function( obj, callback, args ) {
 		var value,
 			i = 0,
@@ -585,7 +585,7 @@ jQuery.extend({ //第15课  扩展一些常用的工具方法
 
 		// A special, fast, case for the most common use of each
 		} else {
-			if ( isArray ) {
+			if ( isArray ) {//数组可以直接通过for循环，因为有长度
 				for ( ; i < length; i++ ) {
 					value = callback.call( obj[ i ], i, obj[ i ] );
 
@@ -593,7 +593,7 @@ jQuery.extend({ //第15课  扩展一些常用的工具方法
 						break;
 					}
 				}
-			} else {
+			} else {//其他使用for in循环
 				for ( i in obj ) {
 					value = callback.call( obj[ i ], i, obj[ i ] );
 
@@ -607,7 +607,7 @@ jQuery.extend({ //第15课  扩展一些常用的工具方法
 		return obj;
 	},
 
-	trim: function( text ) {
+	trim: function( text ) {//去掉前后空格，直接用原生的方法
 		return text == null ? "" : core_trim.call( text );
 	},
 
